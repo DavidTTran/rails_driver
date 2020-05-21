@@ -237,7 +237,6 @@ RSpec.describe 'Spec Harness' do
       response = conn('/api/v1/merchants/find?name=ILL').get
       json = JSON.parse(response.body, symbolize_names: true)
       name = json[:data][:attributes][:name].downcase
-
       expect(json[:data]).to be_a(Hash)
       expect(name).to include('ill')
     end
@@ -249,7 +248,6 @@ RSpec.describe 'Spec Harness' do
       names = json[:data].map do |merchant|
         merchant[:attributes][:name].downcase
       end
-
       expect(names.count).to eq(18)
       names.each do |name|
         expect(name).to include('haru')
@@ -289,7 +287,6 @@ RSpec.describe 'Spec Harness' do
       json = JSON.parse(response.body, symbolize_names: true)
 
       expect(json[:data].length).to eq(8)
-
       expect(json[:data][0][:attributes][:name]).to eq("Kassulke, O'Hara and Quitzon")
       expect(json[:data][0][:id]).to eq("89")
 
